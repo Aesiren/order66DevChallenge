@@ -34,6 +34,8 @@ body {
   /* background: var(--bg-color); */
   background-image: var(--bg-image);
   font-family: var(--font);
+
+
 }
 
 h1 {
@@ -57,110 +59,112 @@ button {
   overflow: hidden;
 }
 
-button:hover {
-  border-color: var(--hover-color);
-  box-shadow: 1px 1px 25px 10px var(--hover-color);
-}
-
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
-}
-
-button:before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(120deg,
-      transparent,
-      var(--button-color),
-      transparent);
-  transition: all 650ms;
-}
-
-button:hover:before {
-  left: 100%;
-}
-
-.card {
-  padding: 2em;
-}
-
-#app {
-  /* max-width: 1280px; */
-  width: 100%;
-  height: 100%;
-  margin-top: 0;
-  margin-bottom: 0;
-  margin-left: 0;
-  margin-right: 0;
-  /* margin: 0 auto; */
-  /* padding: 2rem; */
-  background-size: cover;
-  text-align: center;
-  /* background-color: var(--bg-color); */
-  background-image: url("var(--bg-image)");
-}
-
-@media (prefers-color-scheme: light) {
-  :root {
-    color: var(--text-color);
-    background-color: var(--bg-color);
+  button:hover {
+    border-color: var(--hover-color);
+    box-shadow: 1px 1px 25px 10px var(--hover-color);
   }
 
-  a:hover {
-    color: var(--hover-color);
+  button:focus,
+  button:focus-visible {
+    outline: 4px auto -webkit-focus-ring-color;
   }
 
-  button {
-    background-color: var(--button-color);
+  button:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(120deg,
+        transparent,
+        var(--button-color),
+        transparent);
+    transition: all 650ms;
   }
-}
 
-/*cyberpunk theme */
-[data-theme="cyberpunk"] {
-  --bg-color: #000000;
-  --bg-image: url('src/assets/EMB-cyberpunk-bg.png');
-  --alt-bg-color: #00ffb1;
-  --text-color: #5e00ff;
-  --button-color: #2f006f;
-  --button-text: #5e00ff;
-  --hover-color: #e500ff;
-  --link-color: #fa86eb;
-  --border-color: #00ffb1;
-  --highlight-color: #2f006f;
-  --font: 'Orbitron';
-}
+  button:hover:before {
+    left: 100%;
+  }
 
-/*cthulu theme */
-[data-theme="cthulu"] {
-  --bg-color: #111d13;
-  --bg-image: url('src/assets/EMB-cthulu-bg.png');
-  --alt-bg-color: #b3cbb9;
-  --text-color: #8fb996;
-  --button-color: #415d43;
-  --button-text: #8fb996;
-  --hover-color: #b3cbb9;
-  --link-color: rgb(45, 45, 252);
-  --border-color: #688f6e;
-  --highlight-color: #415d43;
-  --font: 'EdgeOfMadness';
-}
+  .card {
+    padding: 2em;
+  }
 
-@font-face {
-  font-family: 'EdgeOfMadness';
-  src: url('./assets/EdgeOfMadnessItalic.ttf') format('truetype');
-  font-weight: normal;
-  font-style: normal;
-}
+  #app {
+    /* max-width: 1280px; */
+    width: 100%;
+    height: 100%;
+    margin-top: 0;
+    margin-bottom: 0;
+    margin-left: 0;
+    margin-right: 0;
+    /* margin: 0 auto; */
+    /* padding: 2rem; */
+    background-size: contain;
+    text-align: center;
+    /* background-color: var(--bg-color); */
+  }
+
+  @media (prefers-color-scheme: light) {
+    :root {
+      color: var(--text-color);
+      background-color: var(--bg-color);
+    }
+
+    a:hover {
+      color: var(--hover-color);
+    }
+
+    button {
+      background-color: var(--button-color);
+    }
+  }
+
+  /*cyberpunk theme */
+  [data-theme="cyberpunk"] {
+    --bg-color: #000000;
+    --bg-image: url('src/assets/EMB-cyberpunk-bg.png');
+    --back-bg: url('src/assets/Cyberpunk-City.png');
+    --front-bg: url('src/assets/Cyber-Car.png');
+    --alt-bg-color: #00ffb1;
+    --text-color: #5e00ff;
+    --button-color: #2f006f;
+    --button-text: #5e00ff;
+    --hover-color: #e500ff;
+    --link-color: #fa86eb;
+    --border-color: #00ffb1;
+    --highlight-color: #2f006f;
+    --font: 'Orbitron';
+  }
+
+  /*cthulu theme */
+  [data-theme="cthulu"] {
+    --bg-color: #111d13;
+    --bg-image: url('src/assets/EMB-cthulu-bg.png');
+    --back-bg: url('src/assets/Cthulu.png');
+    --alt-bg-color: #b3cbb9;
+    --text-color: #8fb996;
+    --button-color: #415d43;
+    --button-text: #8fb996;
+    --hover-color: #b3cbb9;
+    --link-color: rgb(45, 45, 252);
+    --border-color: #688f6e;
+    --highlight-color: #415d43;
+    --font: 'EdgeOfMadness';
+  }
+
+  @font-face {
+    font-family: 'EdgeOfMadness';
+    src: url('./assets/EdgeOfMadnessItalic.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+  }
 
 
-@font-face {
-  font-family: 'Orbitron';
-  src: url('./assets/OrbitronMedium.ttf') format('truetype');
-  font-weight: normal;
-  font-style: normal;
-}
+  @font-face {
+    font-family: 'Orbitron';
+    src: url('./assets/OrbitronMedium.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+  }

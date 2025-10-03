@@ -9,6 +9,20 @@ const theme = ref('cyberpunk');
 function toggleTheme(){
   theme.value = theme.value == 'cyberpunk' ? 'cthulu' : 'cyberpunk';
 }
+
+
+    document.addEventListener("mousemove", (e: MouseEvent) => {
+      const x = e.clientX / window.innerWidth;
+      const y = e.clientY / window.innerHeight;
+      const offsetX = (x - 0.5) * 20;
+      const offsetY = (y - 0.5) * 20;
+      const appEl = document.getElementById("back-bg");
+      if (appEl) {
+        appEl.style.backgroundPosition = `${50 + offsetX}% ${50 + offsetY}%`;
+      }
+    });
+
+
 </script>
 
 <template>
@@ -22,6 +36,10 @@ function toggleTheme(){
     </div>
     <div class="view">
       <RouterView />
+    </div>
+    <div class="background">
+      <div id="back-bg"></div>
+      <div id="front-bg"></div>
     </div>
     <div class="logo" v-if="theme === 'cyberpunk'">
       <Logo :theme="{theme}"/>
@@ -42,7 +60,6 @@ function toggleTheme(){
   grid-template-columns: 15% 90%;
   grid-template-rows: 10% 90%;
   background: var(--bg-color);
-  background-image: var(--bg-image);
   color: var(--text-color);
   overflow: hidden;
 }
@@ -102,6 +119,43 @@ nav > a + a{
 .view {
   grid-column: 2/2;
   grid-row: 2/2;
+  z-index: 4;
+  background-color: color-mix(in srgb, var(--bg-color), transparent 10%);
+  background-clip: content-box;
+}
+
+.background{
+  grid-column: 2/2;
+  grid-row: 2/2;
+  z-index: 0;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* background-color: var(--bg-color);
+  background-image: ; */
+  perspective: 1000px;
+}
+
+.background #back-bg{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-image: var(--back-bg);
+  background-position: bottom center;
+  background-repeat: no-repeat;
+  z-index: 0;
+}
+
+.background #front-bg{
+  width: 100%;
+  height: 100%;
+  background-image: var(--front-bg);
+  background-position: bottom center;
+  background-repeat: no-repeat;
+  z-index: 1;
 }
 
 </style>
