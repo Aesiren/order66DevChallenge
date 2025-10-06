@@ -3,6 +3,11 @@ import {useRouter} from 'vue-router';
 
 const router = useRouter();
 
+defineProps<{
+  toggleTheme: () => void;
+  toggleSidebar: () => void;
+}>();
+
 function goToBio(){
   router.push('/bio');
 }
@@ -34,13 +39,15 @@ function goToReferences(){
 
 <template>
 
-<button @click="goToHome">Welcome</button>
-<button @click="goToResume">Resume</button>
-<button @click="goToBio">Bio</button>
-<button @click="goToExperience">Experience</button>
-<button @click="goToSkills">Skills</button>
-<button @click="goToFunfact">Fun Fact</button>
-<button @click="goToReferences">References</button>
+
+<button @click="goToHome(); toggleSidebar();">Welcome</button>
+<button @click="goToResume(); toggleSidebar();">Resume</button>
+<button @click="goToBio(); toggleSidebar();">Bio</button>
+<button @click="goToExperience(); toggleSidebar();">Experience</button>
+<button @click="goToSkills(); toggleSidebar();">Skills</button>
+<button @click="goToFunfact(); toggleSidebar();">Fun Fact</button>
+<button @click="goToReferences(); toggleSidebar();">References</button>
+<button @click="toggleTheme(); toggleSidebar();">Change Theme</button>
 
 </template>
 

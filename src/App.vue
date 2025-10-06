@@ -5,11 +5,15 @@ import {ref} from 'vue'
 
 
 const theme = ref('cyberpunk');
+let sidebarView = ref(false);
 
 function toggleTheme(){
   theme.value = theme.value == 'cyberpunk' ? 'cthulu' : 'cyberpunk';
 }
 
+function toggleSidebar(){
+  sidebarView.value = !sidebarView.value;
+}
 
     document.addEventListener("mousemove", (e: MouseEvent) => {
       const x = e.clientX / window.innerWidth;
@@ -27,12 +31,9 @@ function toggleTheme(){
 
 <template>
   <div class="main" :data-theme="theme">
-    <nav>
-      <button @click="toggleTheme">Change Theme</button>
-    </nav>
 
-    <div class="sidebar">
-      <Sidebar />
+    <div id="sidebar" :style="{visibility: sidebarView ? 'visible' : 'hidden'}">
+      <Sidebar :toggleTheme="toggleTheme" :toggleSidebar="toggleSidebar"/>
     </div>
     <div class="view">
       <RouterView />
@@ -42,10 +43,10 @@ function toggleTheme(){
       <div id="front-bg"></div>
     </div>
     <div class="logo" v-if="theme === 'cyberpunk'">
-      <Logo :theme="{theme}"/>
+      <Logo :theme="{theme}" @click="toggleSidebar"/>
     </div>
     <div class="logo" v-if="theme === 'cthulu'">
-      <Logo :theme="{theme}"/>
+      <Logo :theme="{theme}" @click="toggleSidebar"/>
     </div>
 
   </div>
@@ -72,11 +73,9 @@ function toggleTheme(){
   justify-self: center;
   align-self: center;
   margin: 10px;
-  /* padding: 1.5em;
-  width: 100%;
-  height: 100%; */
   will-change: filter;
   transition: filter 300ms;
+  z-index: 5;
 }
 .logo:hover {
   filter: drop-shadow(0 0 2em var(--bg-color));
@@ -88,23 +87,7 @@ body{
   background-color: var(--bg-color);
 }
 
-
-
-nav{
-  border: 2px solid var(--border-color);
-  height: 96%;
-  grid-column: 2/2;
-  grid-row: 1/1;
-  justify-content: center;
-  align-content: center;
-  overflow: hidden;
-}
-
-nav > a + a{
-  margin-left: 10px;
-}
-
-.sidebar {
+#sidebar {
   grid-column: 1/1;
   grid-row: 2/2;
   display: flex;
@@ -113,20 +96,23 @@ nav > a + a{
   justify-content: center;
   justify-self: center;
   border: 2px solid var(--border-color);
+  background-color: color-mix(in srgb, var(--bg-color), transparent 20%);
   overflow: hidden;
+  visibility: hidden;
+  z-index: 5;
 }
 
 .view {
-  grid-column: 2/2;
-  grid-row: 2/2;
+  grid-column: 1/3;
+  grid-row: 1/3;
   z-index: 4;
   background-color: color-mix(in srgb, var(--bg-color), transparent 10%);
   background-clip: content-box;
 }
 
 .background{
-  grid-column: 2/2;
-  grid-row: 2/2;
+  grid-column: 1/3;
+  grid-row: 1/3;
   z-index: 0;
   position: relative;
   width: 100%;
@@ -134,8 +120,6 @@ nav > a + a{
   display: flex;
   align-items: center;
   justify-content: center;
-  /* background-color: var(--bg-color);
-  background-image: ; */
   perspective: 1000px;
 }
 
