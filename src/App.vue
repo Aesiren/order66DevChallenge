@@ -106,8 +106,10 @@ body{
   grid-column: 1/3;
   grid-row: 1/3;
   z-index: 4;
+  width: 100%;
   background-color: color-mix(in srgb, var(--bg-color), transparent 10%);
   background-clip: content-box;
+  justify-self: center;
 }
 
 .background{

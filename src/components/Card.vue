@@ -25,7 +25,6 @@ defineProps<{title: string, organization: string, location: string, timeframe: s
   height: 300px;
   perspective: 1000px;
   cursor: pointer;
-
 }
 
 .block-face{

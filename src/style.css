@@ -92,18 +92,14 @@ button {
   }
 
   #app {
-    /* max-width: 1280px; */
     width: 100%;
     height: 100%;
     margin-top: 0;
     margin-bottom: 0;
     margin-left: 0;
     margin-right: 0;
-    /* margin: 0 auto; */
-    /* padding: 2rem; */
     background-size: contain;
     text-align: center;
-    /* background-color: var(--bg-color); */
   }
 
   @media (prefers-color-scheme: light) {
